@@ -258,7 +258,7 @@
       <Card title="Cellular Automata"
             hasImage={true}
             imgSrc="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/95509574_10212799532781662_987953060602970112_n.jpg?_nc_cat=105&_nc_sid=cdbe9c&_nc_ohc=tmJc3c-rsowAX-Hef8v&_nc_ht=scontent-lax3-1.xx&oh=6880adb38a8dad8b501a57563de6ef95&oe=5F605CBF"
-            description="Some animations of 1D and 2D cellular automata. Made with vanilla JS and a little bootstrap">
+            description="Some animations of 1D and 2D cellular automata. Made with vanilla JS and a little bootstrap and jQuery">
             
         <Chip text="code" type="code"/>
 
