@@ -14,22 +14,40 @@
   
 
   export let name;
+  let hello = "Hello!";
+  let preMain = "My name's Gurhar and I am a frontend web developer."
+  let mainText = "Lets make awesome stuff!";
 
   let showProjects = false;
   let showContactForm = false;
-
+  let showBio = false;
 
   let fadeStage = "opacity-0";
   let delayType = "opacity-0";
 
   setTimeout(()=>{
     delayType = "opacity-1 fadeIn";
-  }, 3000);
+  }, 2000);
 
   setTimeout(()=>{
     fadeStage = "fadeIn";
-  }, 6000);
+  }, 4000);
   
+  $: if (showBio) {
+    preMain = "";
+    hello = "";
+    mainText = "";
+  }
+
+  function sendMessage(){
+    setTimeout(()=>{
+      console.log("message sent");
+      showContactForm = !showContactForm;
+      console.log("show", showContactForm);
+    }, 700);
+
+  }
+
 </script>
 
 <style>
@@ -68,7 +86,7 @@
   }
 
   .scaleIn{
-    animation: scale-in .5s ease-out;
+    animation: scale-in .4s ease-out;
   }
 
   .backgroundImage{
@@ -124,12 +142,14 @@
 
 <Tailwindcss />
 
-<!-- <div class="backgroundImage">
-  <img src="https://i.pinimg.com/564x/cd/d4/24/cdd424e8cd6d3cf929cdf19213dd419d.jpg" />
-</div> -->
+ 
 
 <div class="main-container text-blue-700 text-center h-full">
- 
+  
+  <!-- <div class="backgroundImage">
+    <img src="https://imgprx.livejournal.net/3708e8eec0cbca5f20bcf468c1a111ecb1711dc3/M-6EpnphedBDC6oBKeP1w2Pzc0Z54SZMg6j1-VCZAlZYkIrYy4ZLAtvWAuC2GGhqm_5ewkrqx9ErrfWmszlfNDpuDbtqTgM9WwHoTJkA6tU" />
+  </div> -->
+
   <h1 class="{fadeStage}">Gurhar Webdev</h1>
 
   
@@ -141,11 +161,18 @@
 
   
   <p class="scaleIn mt-20">
-      Hello! 
+    {hello}
     </p>
-  <p class={` ${delayType}`}> My name's Gurhar and I am a frontend web developer.</p>
-  <p class={` ${fadeStage}`}> Lets make awesome stuff! </p>
+  <p class={` ${delayType}`}> {preMain} </p>
 
+  <p class={` ${fadeStage}`}> {mainText} </p>
+
+  {#if showBio}
+    <div class="md:mx-20 mx-10" transition:fly={{duration: 600, x: -900}}>
+      <p>This is my bio. I love to build sleak web and mobile apps that are fun to interact with.
+      Blah blah blah. Responsive design blah blah.</p>
+    </div>
+  {/if}
 
   <div class="absolute bottom-0 w-full">
 
@@ -177,6 +204,21 @@
       elevation="sm"
       btnText="Projects/work"
     />
+
+ 
+      <Button
+        on:click={()=>{
+          showBio = !showBio;
+        }}
+        class="mx-2"
+        textMode={true}
+        rounded={true}
+        color="primary"
+
+        elevation="sm"
+        btnText="about me"
+      />
+    
 
     <a href="https://docs.google.com/document/d/e/2PACX-1vTBr0Tqo8sNXf0weWmEHpP1kBmPw_G0-3VnlrYULcL3dDb5-PTh8Ix_66jcNm7YMARe2XxpfGsaDsDk/pub" target="_blank">
       <Button
@@ -316,9 +358,10 @@
 {/if}
 
 {#if showContactForm}
-  <Overlay flightPath="{{duration: 700, x: 1000}}" bind:value={showContactForm}>
-    <ContactForm on:sendForm={()=>{ console.log("sent"); showContactForm = false;}}/>
+  <Overlay flightPath="{{duration: 700, x: 1000}}" bind:value={showContactForm} >
+    <ContactForm on:sent={sendMessage}/>
   </Overlay>
+  
 {/if}
   
   </div>

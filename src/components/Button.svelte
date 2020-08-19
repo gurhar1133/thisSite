@@ -77,6 +77,9 @@
         else if (color === "secondary"){
             textColor = 'text-blue-500 hover:bg-blue-200 hover:bg-opacity-5';
         }
+        else if (color === "white"){
+            textColor = 'text-white hover:bg-gray-100 hover:bg-opacity-25';
+        }
         else {
             textColor = `text-${color}-500 hover:bg-${color}-200 hover:bg-opacity-5`;
             
@@ -128,7 +131,14 @@
         dispatch("click");
         clickEvent();
         if (outline || textMode){
-            circleClass = `circle-${color}`
+            if (color === "white"){
+                circleClass = "circle";
+            }
+            else{
+                circleClass = `circle-${color}`;
+            }
+            
+            
         }
         else {
             circleClass = "circle";

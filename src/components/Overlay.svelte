@@ -1,5 +1,6 @@
 <script>
     import Card from "./Card.svelte";
+    import Button from "./Button.svelte";
     import {fly} from "svelte/transition";
     export let absolute = false; 
     export let opacity = .45;
@@ -59,7 +60,7 @@
         
     }
     .closer{
-      top: 4%;
+      top: 2.6%;
       left: 8%;
       position: fixed;
       z-index: 1000;
@@ -82,7 +83,10 @@
       
  
 {#if value}
-    <h4 class="text-gray-200 closer inline cursor-pointer">X</h4>
+    <!-- <h4 class="text-gray-200 closer inline cursor-pointer">X</h4> -->
+    <div class="closer">
+      <Button btnText="X" textMode={true} rounded={true} elevation="sm" color="white" />
+    </div>
     <div on:click={()=>{
         value = false;
     }} transition:fly="{flightPath}" class="{`${hidden} slot-content`}"> 
