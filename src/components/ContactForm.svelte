@@ -19,7 +19,8 @@
 </style>
 
 <div class="border-1 border-gray-400 contact rounded text-center bg-white w-screen p-20">
-    Send me a message!
+    Send me a message. Let's make something great!
+    <hr>
     <br>
     Email: <Textfield />
     <br>
