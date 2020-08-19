@@ -28,5 +28,5 @@
     Message:
     <textarea></textarea>
     <br>
-    <Button on:click={dispatch("sendForm")} rounded={true} outline={true} btnText="send" color="primary"/>
+    <Button on:click={()=>{dispatch("sendForm")}} rounded={true} outline={true} btnText="send" color="primary"/>
 </div>

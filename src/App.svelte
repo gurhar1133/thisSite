@@ -152,36 +152,6 @@
     
 
     <div class={`my-4 flex flex-wrap justify-center ${fadeStage}`}> 
-  
-  <a href="https://github.com/gurhar1133" target="_blank">
-    <Button
-      textMode={true}
-      elevation="none"
-      iconData={github}
-      color="primary"
-      fab={true}
-    />
-  </a>
-    
-    
-  <a href="https://www.linkedin.com/in/gurhar-khalsa-61a9ba158/" target="_blank"> 
-    <Button 
-      textMode={true}
-      elevation="none"
-      iconData={linkedin}
-      color="primary" 
-      fab={true}
-    />
-  </a>
-    
-  
-    
-
-  </div>
-
-  <hr class={`border-blue-500 width-8/10 ${fadeStage}`}>
-
-  <div class={`my-4 flex flex-wrap justify-center ${fadeStage}`}>
 
     <Button
       on:click={()=>{
@@ -232,6 +202,38 @@
       elevation="sm"
       btnText="Skills"
     /> -->
+  
+  
+    
+  
+    
+
+  </div>
+
+  <hr class={`border-blue-500 width-8/10 ${fadeStage}`}>
+
+  <div class={`my-4 flex flex-wrap justify-center ${fadeStage}`}>
+
+      <a href="https://github.com/gurhar1133" target="_blank">
+    <Button
+      textMode={true}
+      elevation="none"
+      iconData={github}
+      color="primary"
+      fab={true}
+    />
+  </a>
+    
+    
+  <a href="https://www.linkedin.com/in/gurhar-khalsa-61a9ba158/" target="_blank"> 
+    <Button 
+      textMode={true}
+      elevation="none"
+      iconData={linkedin}
+      color="primary" 
+      fab={true}
+    />
+  </a>
 
   </div>
 
@@ -250,7 +252,7 @@
         <a href="https://emailtest-c548a.web.app/" target="_blank">
           <Chip text="link" type="link"/>
         </a>
-        
+
       </Card>
 
       <Card title="Cellular Automata"
@@ -259,7 +261,11 @@
             description="Some animations of 1D and 2D cellular automata. Made with vanilla JS and a little bootstrap">
             
         <Chip text="code" type="code"/>
+
+      <a href="https://codepen.io/g-rhar-khalsa/pen/MWaoJrP" target="_blank">
         <Chip text="link" type="link"/>
+      </a>
+        
       </Card>
 
       <Card title="Svelte Components"
@@ -287,7 +293,7 @@
 
 {#if showContactForm}
   <Overlay flightPath="{{duration: 700, x: 1000}}" bind:value={showContactForm}>
-    <ContactForm on:sendForm={()=>{ console.log("sent"); showContactForm = !showContactForm;}}/>
+    <ContactForm on:sendForm={()=>{ console.log("sent"); showContactForm = false;}}/>
   </Overlay>
 {/if}
   
