@@ -175,7 +175,7 @@
       color="primary"
 
       elevation="sm"
-      btnText="Projects"
+      btnText="Projects/work"
     />
 
     <a href="https://docs.google.com/document/d/e/2PACX-1vTBr0Tqo8sNXf0weWmEHpP1kBmPw_G0-3VnlrYULcL3dDb5-PTh8Ix_66jcNm7YMARe2XxpfGsaDsDk/pub" target="_blank">
@@ -255,6 +255,32 @@
 
       </Card>
 
+
+      <Card title="Svelte Components"
+            hasImage={true}
+            imgSrc="https://www.tempoautomation.com/wp-content/uploads/2018/05/shutterstock_175375409-673x381.jpg"
+            description="Material UI inspired components for web and native mobile applications. Svelte, svelte-native and tailwindCSS">
+        
+        <a href="https://github.com/gurhar1133/component_practice" target="_blank">
+          <Chip text="boilerplate" type="code"/>
+        </a>
+        
+        <a href="https://github.com/gurhar1133/native_components" target="_blank">
+          <Chip text="boilerplate (native)" type="code"/>
+        </a>
+        
+        <a href="https://github.com/gurhar1133/componentExample" target="_blank">
+          <Chip text="finished" type="code" />
+        </a>
+        
+        <a href="https://github.com/gurhar1133/nativeComponentExample" target="_blank">
+          <Chip text="finished (native)" type="code"/>
+        </a>
+
+        
+
+      </Card>
+
       <Card title="Cellular Automata"
             hasImage={true}
             imgSrc="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/95509574_10212799532781662_987953060602970112_n.jpg?_nc_cat=105&_nc_sid=cdbe9c&_nc_ohc=tmJc3c-rsowAX-Hef8v&_nc_ht=scontent-lax3-1.xx&oh=6880adb38a8dad8b501a57563de6ef95&oe=5F605CBF"
@@ -271,14 +297,7 @@
         
       </Card>
 
-      <Card title="Svelte Components"
-            hasImage={true}
-            imgSrc="https://www.tempoautomation.com/wp-content/uploads/2018/05/shutterstock_175375409-673x381.jpg"
-            description="Material UI inspired components. An assigment I made for other interns during an internship. Svelte and tailwindCSS">
-        
-        <Chip text="code" type="code"/>
-        <Chip text="link" type="link"/>
-      </Card>
+      
 
       <Card title="This Site"
             hasImage={true}
