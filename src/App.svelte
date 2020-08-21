@@ -8,12 +8,43 @@
   import {fly} from "svelte/transition";
   import ContactForm from "./components/ContactForm.svelte";
   import Icon from 'svelte-awesome';
+  import {onMount} from "svelte";
   import { beer, refresh, comment, codeFork, camera, ban, github, linkedin } from 'svelte-awesome/icons';
   import { faThumbsUp, faThumbsDown} from '@fortawesome/free-regular-svg-icons';
 
   
 
   export let name;
+
+
+
+  let canvas;
+  let particles;
+  let mouse;
+  onMount(()=>{
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    mouse = {
+      x : null,
+      y : null,
+      radius : (canvas.height/80) * (canvas.height/80)
+    };
+  })
+
+  function handleMouseMove(event){
+    mouse.x = event.x;
+    mouse.y = event.y;
+    console.log("mouse.x", mouse.x, "mouse.y", mouse.y);
+  }
+
+  
+
+  // const ctx = canvas.getContext('2d');
+  // canvas.width = window.innerWidth;
+  // canvas.height = window.innerHeight;
+
+  
   let hello = "Hello!";
   let preMain = "My name's Gurhar and I am a frontend web developer."
   let mainText = "Lets make awesome stuff!";
@@ -21,6 +52,7 @@
   let showProjects = false;
   let showContactForm = false;
   let showBio = false;
+  
 
   let fadeStage = "opacity-0";
   let delayType = "opacity-0";
@@ -48,6 +80,8 @@
 
   }
 
+  
+  
 </script>
 
 <style>
@@ -72,7 +106,15 @@
     }
     
   }
-
+  .canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    z-index: -1000;
+  }
   .typewriter {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -139,16 +181,17 @@
 </style>
 
 
-
+<canvas  class="canvas" bind:this={canvas} ></canvas>
 <Tailwindcss />
 
- 
 
-<div class="main-container text-blue-700 text-center h-full">
+<div on:mousemove={handleMouseMove} class="main-container text-blue-700 text-center h-full">
   
   <!-- <div class="backgroundImage">
     <img src="https://imgprx.livejournal.net/3708e8eec0cbca5f20bcf468c1a111ecb1711dc3/M-6EpnphedBDC6oBKeP1w2Pzc0Z54SZMg6j1-VCZAlZYkIrYy4ZLAtvWAuC2GGhqm_5ewkrqx9ErrfWmszlfNDpuDbtqTgM9WwHoTJkA6tU" />
   </div> -->
+
+  
 
   <h1 class="{fadeStage}">Gurhar Webdev</h1>
 
@@ -173,6 +216,9 @@
       Blah blah blah. Responsive design blah blah.</p>
     </div>
   {/if}
+
+
+
 
   <div class="absolute bottom-0 w-full">
 
