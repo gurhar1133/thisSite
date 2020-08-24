@@ -21,8 +21,9 @@
   let canvas;
   let particles;
   let mouse;
+  let ctx;
   onMount(()=>{
-    const ctx = canvas.getContext('2d');
+    ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     mouse = {
@@ -35,10 +36,68 @@
   function handleMouseMove(event){
     mouse.x = event.x;
     mouse.y = event.y;
-    console.log("mouse.x", mouse.x, "mouse.y", mouse.y);
+    console.log("mouse.x", mouse.x, "mouse.y", mouse.y, "radius", mouse.radius);
   }
 
+  class Particle {
+    constructor(x, y, directionX, directionY, size, color){
+      this.x = x;
+      this.y = y;
+      this.directionX = directionX;
+      this.directionY = directionY;
+      this.size = size;
+      this.color = color;
+    }
+
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+      ctx.fillStyle = "#bbb";
+      ctx.fill();
+    }
+
+    update(){
+      if (this.x > canvas.width || this.x < 0){
+        this.directionX = -this.directionX;
+      }
+      if (this.y > canvas.hieght || this.y < 0){
+        this.directionY = -this.directionY;
+      }
+
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let distance = Math.sqrt( dx * dx + dy * dy);
+      if (distance < mouse.radius + mouse.size) {
+        if ( mouse.x < this.x && this.x < canvas.width - this.size * 10){
+            this.x += 10;
+        }
+        if ( mouse.x > this.x && this.x > this.size * 10){
+            this.x -= 10;
+        }
+        if (mouse.y < this.y && this.y < canvas.height - this.size * 10){
+            this.y += 10;
+        }
+        if (mouse.y > this.y && this.y > this.size * 10){
+            this.y -= 10;
+        }
+      }
+
+      this.x = this.directionX;
+      this.y = this.directionY;
+
+      this.draw();
+    }
+  }
   
+  function init(){
+    particles = [];
+    let numParticles = (canvas.height * canvas.width) / 9000;
+
+    for (let i = 0; i < numParticles; i++){
+      let size = (Math.random() * 5) + 1;
+      let x = (Math.random()  ) 
+    }
+  }
 
   // const ctx = canvas.getContext('2d');
   // canvas.width = window.innerWidth;
@@ -46,8 +105,8 @@
 
   
   let hello = "Hello!";
-  let preMain = "My name's Gurhar and I am a frontend web developer."
-  let mainText = "Lets make awesome stuff!";
+  let preMain = "My name's Gurhar and I am a web developer."
+  let mainText = "Lets make something great!";
 
   let showProjects = false;
   let showContactForm = false;
@@ -112,7 +171,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #eee;
+    /* background: #eee; */
     z-index: -1000;
   }
   .typewriter {
@@ -212,8 +271,7 @@
 
   {#if showBio}
     <div class="md:mx-20 mx-10" transition:fly={{duration: 600, x: -900}}>
-      <p>This is my bio. I love to build sleak web and mobile apps that are fun to interact with.
-      Blah blah blah. Responsive design blah blah.</p>
+      <p>I love to build sleak, responsive web and mobile apps that are fun to interact with. I primarily am a frontend engineer. My skillset includes HMTL, CSS, Javascript, SvelteJS, tailwindCSS, Bootstrap, Python, git/github, firebase, responsive design, and basic npm. Looking for a frontend engineer or a freelancer? Contact me an lets make something cool!</p>
     </div>
   {/if}
 
